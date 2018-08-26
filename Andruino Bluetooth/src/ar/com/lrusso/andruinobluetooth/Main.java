@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -56,6 +57,11 @@ public class Main extends Activity
 
 		context = this;
 		activity = this;
+		
+		senderButton.setTextColor(Color.LTGRAY);
+		senderButton.setEnabled(false);
+		senderTextbox.setText("");
+		senderTextbox.setEnabled(false);
 
 		setTitle(getResources().getString(R.string.app_name) + " - " + getResources().getString(R.string.textDisconnected));
 		
@@ -65,17 +71,10 @@ public class Main extends Activity
 		    	{
 				try
 					{
-					if (bluetooth.isConnected() == false)
-						{
-						Toast.makeText(activity, getResources().getString(R.string.textFirstConnect), Toast.LENGTH_SHORT).show();
-						}
-						else
-						{
-						if (senderTextbox.length()>0)
-							{	
-							bluetooth.send(senderTextbox.getText().toString());
-							senderTextbox.setText("");
-							}
+					if (senderTextbox.length()>0)
+						{	
+						bluetooth.send(senderTextbox.getText().toString());
+						senderTextbox.setText("");
 						}
 					}
 					catch(Exception e)
@@ -200,12 +199,21 @@ public class Main extends Activity
 							bluetooth.setTargetDeviceName(names[item]);
 							Toast.makeText(activity, R.string.textConnected, Toast.LENGTH_SHORT).show();
 							activity.setTitle(activity.getString(R.string.app_name) + " - " + activity.getResources().getString(R.string.textConnectedTo) + " " + names[item]);
+							senderButton.setTextColor(Color.BLACK);
+							senderButton.setEnabled(true);
+							senderTextbox.setText("");
+							senderTextbox.setEnabled(true);
+							senderTextbox.requestFocus();
 							}
 							else
 							{
 							dialog.cancel();
 							bluetooth.setTargetDeviceName("");
 							activity.setTitle(activity.getString(R.string.app_name) + " - " + activity.getResources().getString(R.string.textDisconnected));
+							senderButton.setTextColor(Color.LTGRAY);
+							senderButton.setEnabled(false);
+							senderTextbox.setText("");
+							senderTextbox.setEnabled(false);
 							try
 								{
 								bluetooth.disconnect();
@@ -358,6 +366,10 @@ public class Main extends Activity
 		    				{
 		        			Toast.makeText(context, context.getResources().getString(R.string.textDisconnected), Toast.LENGTH_LONG).show();
 		        			setTitle(context.getResources().getString(R.string.app_name) + " - " + context.getResources().getString(R.string.textDisconnected));
+							senderButton.setTextColor(Color.LTGRAY);
+		        			senderButton.setEnabled(false);
+		        			senderTextbox.setText("");
+		        			senderTextbox.setEnabled(false);
 		    				}
 		    				catch(Exception e)
 		    				{

@@ -46,22 +46,21 @@ public final class R {
         public static final int hello_world=0x7f040001;
         public static final int menu_settings=0x7f040002;
         public static final int textAbout=0x7f04000c;
-        public static final int textAboutMessage=0x7f040010;
+        public static final int textAboutMessage=0x7f04000f;
         public static final int textBluetoothOff=0x7f040009;
         public static final int textConnect=0x7f040004;
         public static final int textConnected=0x7f040006;
         public static final int textConnectedTo=0x7f040007;
         public static final int textConnectingError=0x7f040005;
         public static final int textDisconnected=0x7f040008;
-        public static final int textFirstConnect=0x7f04000d;
-        public static final int textMessage=0x7f04000e;
-        public static final int textOK=0x7f04000f;
+        public static final int textMessage=0x7f04000d;
+        public static final int textOK=0x7f04000e;
         public static final int textPairedDevices=0x7f04000a;
         public static final int textPrivacy=0x7f04000b;
-        public static final int textPrivacyText=0x7f040014;
-        public static final int textSchematics=0x7f040013;
+        public static final int textPrivacyText=0x7f040013;
+        public static final int textSchematics=0x7f040012;
         public static final int textSend=0x7f040003;
-        public static final int textSketch=0x7f040011;
-        public static final int textSketchExample=0x7f040012;
+        public static final int textSketch=0x7f040010;
+        public static final int textSketchExample=0x7f040011;
     }
 }
