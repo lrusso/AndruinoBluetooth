@@ -130,7 +130,7 @@ public class Main extends Activity
 						{
 	    				clickInSketch();
 						}
-					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSchematics)))
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSchematic)))
 						{
 						clickInSchematics();
 						}
@@ -267,7 +267,7 @@ public class Main extends Activity
 		{
 		Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen); 
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
-		dialog.setContentView(R.layout.schematics); 
+		dialog.setContentView(R.layout.schematic); 
 		dialog.show();
 		}
 	

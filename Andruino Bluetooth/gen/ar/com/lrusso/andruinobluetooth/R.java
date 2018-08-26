@@ -13,7 +13,7 @@ public final class R {
     public static final class drawable {
         public static final int abc_ic_menu_moreoverflow_normal_holo_light=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int schematics=0x7f020002;
+        public static final int schematic=0x7f020002;
     }
     public static final class id {
         public static final int about=0x7f06000d;
@@ -34,7 +34,7 @@ public final class R {
     public static final class layout {
         public static final int main=0x7f030000;
         public static final int privacy=0x7f030001;
-        public static final int schematics=0x7f030002;
+        public static final int schematic=0x7f030002;
         public static final int sketch=0x7f030003;
     }
     public static final class menu {
@@ -58,7 +58,7 @@ public final class R {
         public static final int textPairedDevices=0x7f04000a;
         public static final int textPrivacy=0x7f04000b;
         public static final int textPrivacyText=0x7f040013;
-        public static final int textSchematics=0x7f040012;
+        public static final int textSchematic=0x7f040012;
         public static final int textSend=0x7f040003;
         public static final int textSketch=0x7f040010;
         public static final int textSketchExample=0x7f040011;
