@@ -1,6 +1,6 @@
 # Andruino Bluetooth
 
-Android App that allows the user to connect to an Arduino board using Bluetooth
+Android App that allows the user to connect to an Arduino board using Bluetooth.
 
 ## App Link
 
