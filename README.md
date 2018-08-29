@@ -8,4 +8,4 @@ https://play.google.com/store/apps/details?id=ar.com.lrusso.andruinobluetooth
 
 ## Schematics
 
-![alt Schematics](https://raw.githubusercontent.com/lrusso/AndruinoBluetooth/master/Andruino%20Bluetooth/res/drawable-ldpi/schematics.png)
+![alt Schematics](https://raw.githubusercontent.com/lrusso/AndruinoBluetooth/master/Andruino%20Bluetooth/res/drawable-ldpi/schematic.png)
