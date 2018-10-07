@@ -44,6 +44,8 @@ public class Main extends Activity
 	
 	public static BluetoothUtils			bluetooth = null;
 
+	private boolean connected = false;
+	
 	@Override protected void onCreate(Bundle savedInstanceState)
 		{
 		super.onCreate(savedInstanceState);
@@ -102,6 +104,7 @@ public class Main extends Activity
 			}
 		super.onDestroy();
 		}
+
 	@Override public boolean onCreateOptionsMenu(Menu menu)
 		{
 		MenuInflater inflater = getMenuInflater();
@@ -118,6 +121,16 @@ public class Main extends Activity
 			PopupMenu popupMenu = new PopupMenu(this, menuItemView);
 			popupMenu.inflate(R.menu.popup_menu);
 
+    		Menu popupMenu2 = popupMenu.getMenu();
+    		if (connected==true)
+    			{
+        	    popupMenu2.findItem(R.id.connect).setVisible(false);
+    			}
+    			else
+    			{
+            	popupMenu2.findItem(R.id.disconnect).setVisible(false);
+    			}
+
 			popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
 				{  
 				public boolean onMenuItemClick(MenuItem item)
@@ -125,6 +138,10 @@ public class Main extends Activity
 					if (item.getTitle().toString().contains(getResources().getString(R.string.textConnect)))
 						{
 						clickInConnect();
+						}
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textDisconnect)))
+						{
+						clickInDisconnect();
 						}
 					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSketch)))
 						{
@@ -204,6 +221,7 @@ public class Main extends Activity
 							senderTextbox.setText("");
 							senderTextbox.setEnabled(true);
 							senderTextbox.requestFocus();
+							connected = true;
 							}
 							else
 							{
@@ -214,6 +232,7 @@ public class Main extends Activity
 							senderButton.setEnabled(false);
 							senderTextbox.setText("");
 							senderTextbox.setEnabled(false);
+							connected = false;
 							try
 								{
 								bluetooth.disconnect();
@@ -270,7 +289,22 @@ public class Main extends Activity
 		dialog.setContentView(R.layout.schematic); 
 		dialog.show();
 		}
-	
+
+	private void clickInDisconnect()
+		{
+		if (bluetooth!=null)
+			{
+			try
+				{
+				bluetooth.disconnect();
+				}
+				catch(Exception e)
+				{
+				}
+			}
+		connected = false;
+		}
+
 	private void clickInPolicy()
 		{
 		LayoutInflater inflater = LayoutInflater.from(this);

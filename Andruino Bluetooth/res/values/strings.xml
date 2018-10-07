@@ -7,6 +7,7 @@
 
     <string name="textSend">Send</string>
     <string name="textConnect">Connect</string>
+	<string name="textDisconnect">Disconnect</string>
     <string name="textConnectingError">Error while connecting. Follow this instructions to solve the problem:\n\n1) Check if the device that you want to connect to is near to your device and with the Bluetooth on.\n\n2) Turn off and on again the Bluetooth of the smartphone or tablet that is running this App and try again.</string>
     <string name="textConnected">Connected</string>
     <string name="textConnectedTo">Connected to</string>
