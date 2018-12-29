@@ -1,5 +1,6 @@
 package ar.com.lrusso.andruinobluetooth;
 
+import android.content.ClipboardManager;
 import android.text.Html;
 
 import java.util.Calendar;
@@ -10,6 +11,7 @@ import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
 import android.content.Context;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 public class Main extends Activity
@@ -143,6 +146,14 @@ public class Main extends Activity
 						{
 						clickInDisconnect();
 						}
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textClear)))
+						{
+						clickInClearText();
+						}
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textCopy)))
+						{
+						clickInCopyText();
+						}
 					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSketch)))
 						{
 	    				clickInSketch();
@@ -221,6 +232,14 @@ public class Main extends Activity
 							senderTextbox.setText("");
 							senderTextbox.setEnabled(true);
 							senderTextbox.requestFocus();
+							try
+								{
+								InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+								imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+								}
+								catch(Exception e)
+								{
+								}
 							connected = true;
 							}
 							else
@@ -290,17 +309,71 @@ public class Main extends Activity
 		dialog.show();
 		}
 
+	private void clickInClearText()
+		{
+		try
+			{
+			receiverTextbox.setText("");
+			}
+			catch(Exception e)
+			{
+			}
+		}
+	
+	private void clickInCopyText()
+		{
+		try
+			{
+			if (receiverTextbox.getText().toString().length()>0)
+				{
+			    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE); 
+			    ClipData clip = ClipData.newPlainText("Data",receiverTextbox.getText().toString());
+			    clipboard.setPrimaryClip(clip);
+			    Toast.makeText(this,getResources().getString(R.string.textCopyOK),Toast.LENGTH_SHORT).show();
+				}
+				else
+				{
+			    Toast.makeText(this,getResources().getString(R.string.textCopyError),Toast.LENGTH_SHORT).show();
+				}
+		    }
+			catch(Exception e)
+			{
+			}
+		}
+	
 	private void clickInDisconnect()
 		{
-		if (bluetooth!=null)
+		try
 			{
-			try
-				{
-				bluetooth.disconnect();
-				}
-				catch(Exception e)
-				{
-				}
+			Toast.makeText(context, context.getResources().getString(R.string.textDisconnectedToast), Toast.LENGTH_LONG).show();
+			setTitle(context.getResources().getString(R.string.app_name) + " - " + context.getResources().getString(R.string.textDisconnected));
+			senderButton.setTextColor(Color.LTGRAY);
+			senderButton.setEnabled(false);
+			senderTextbox.setText("");
+			senderTextbox.setEnabled(false);
+			}
+			catch(Exception e)
+			{
+			}
+		try
+			{
+			bluetooth.disconnect();
+			}
+			catch (Exception e)
+			{
+			}
+		try
+			{
+		    InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+		    View view = activity.getCurrentFocus();
+		    if (view == null)
+		    	{
+		        view = new View(activity);
+		    	}
+		    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);			
+			}
+			catch(Exception e)
+			{
 			}
 		connected = false;
 		}
@@ -396,25 +469,10 @@ public class Main extends Activity
 		        	{
 		        	if (device.getName().equals(bluetooth.getTargetDeviceName()))
 		        		{
-		        		try
-		    				{
-		        			Toast.makeText(context, context.getResources().getString(R.string.textDisconnected), Toast.LENGTH_LONG).show();
-		        			setTitle(context.getResources().getString(R.string.app_name) + " - " + context.getResources().getString(R.string.textDisconnected));
-							senderButton.setTextColor(Color.LTGRAY);
-		        			senderButton.setEnabled(false);
-		        			senderTextbox.setText("");
-		        			senderTextbox.setEnabled(false);
-		    				}
-		    				catch(Exception e)
-		    				{
-		    				}
-		        		try
-		    				{
-		        			bluetooth.disconnect();
-		    				}
-		    				catch (Exception e)
-		    				{
-		    				}
+		        		if (connected==true)
+		        			{
+		        			clickInDisconnect();
+		        			}
 		        		}
 		        	}    
 	    		}

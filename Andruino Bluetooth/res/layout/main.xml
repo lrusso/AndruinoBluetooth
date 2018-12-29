@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" android:background="#D8D8D8">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:background="#D8D8D8">
 	
     <RelativeLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="49dp" android:background="#FFFFFF"> 
 	    <ScrollView android:id="@+id/receiverScrollbar" android:layout_width="fill_parent" android:layout_height="fill_parent">
@@ -16,7 +16,7 @@
     
     <RelativeLayout android:id="@+id/linearLayout2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:background="#E8E8E8"> 
     	<LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="bottom|left|right" android:orientation="horizontal"> 
-    	    <EditText android:id="@+id/senderTextbox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:textColor="#000000" android:inputType="text"> <requestFocus /></EditText>
+    	    <EditText android:id="@+id/senderTextbox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:textColor="#000000" android:inputType="text"></EditText>
         	<Button android:id="@+id/senderButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000"  android:onClick="myClickHandler" android:text="@string/textSend"/>
     	</LinearLayout>
     </RelativeLayout>
