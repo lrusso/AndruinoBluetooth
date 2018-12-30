@@ -184,7 +184,13 @@ final class BluetoothUtilsThread extends Thread
         		if (readMessage.length()>0)
 	        		{
         			Main.receiverTextbox.append(readMessage);
-        			Main.receiverScrollbar.fullScroll(ScrollView.FOCUS_DOWN);
+        			Main.receiverScrollbar.postDelayed(new Runnable()
+        				{
+        				@Override public void run()
+        		    		{
+        					Main.receiverScrollbar.fullScroll(ScrollView.FOCUS_DOWN);
+        		    		}
+        				}, 100);
 	        		}
         		break;
         		}

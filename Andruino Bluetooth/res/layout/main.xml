@@ -16,7 +16,7 @@
     
     <RelativeLayout android:id="@+id/linearLayout2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:background="#E8E8E8"> 
     	<LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="bottom|left|right" android:orientation="horizontal"> 
-    	    <EditText android:id="@+id/senderTextbox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:textColor="#000000" android:inputType="text"></EditText>
+    	    <EditText android:id="@+id/senderTextbox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:textColor="#000000" android:inputType="text" android:imeOptions="actionSend"/>
         	<Button android:id="@+id/senderButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000"  android:onClick="myClickHandler" android:text="@string/textSend"/>
     	</LinearLayout>
     </RelativeLayout>

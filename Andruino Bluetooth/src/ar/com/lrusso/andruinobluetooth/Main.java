@@ -24,6 +24,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -87,6 +89,29 @@ public class Main extends Activity
 					}
 		    	}
 		 	});
+		
+		senderTextbox.setOnEditorActionListener(new EditText.OnEditorActionListener()
+			{
+			@Override public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2)
+				{
+				if (arg1 == EditorInfo.IME_ACTION_SEND)
+	        		{
+					try
+						{
+						if (senderTextbox.length()>0)
+							{	
+							bluetooth.send(senderTextbox.getText().toString());
+							senderTextbox.setText("");
+							}
+						}
+						catch(Exception e)
+						{
+						}
+					return true;
+	        		}
+				return false;
+				}
+			});
 		 
 	    IntentFilter filter = new IntentFilter();
 	    filter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
