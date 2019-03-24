@@ -4,8 +4,10 @@
 	<item android:id="@+id/disconnect" android:title="@string/textDisconnect"/>
 	<item android:id="@+id/clear" android:title="@string/textClear"/>
 	<item android:id="@+id/copy" android:title="@string/textCopy"/>
-	<item android:id="@+id/example" android:title="@string/textSketch"/>
-	<item android:id="@+id/schematic" android:title="@string/textSchematic"/>
-	<item android:id="@+id/privacy" android:title="@string/textPrivacy"/>  
+	<item android:id="@+id/schematic1" android:title="@string/textSchematic1"/>
+	<item android:id="@+id/example1" android:title="@string/textSketch1"/>
+	<item android:id="@+id/schematic2" android:title="@string/textSchematic2"/>
+	<item android:id="@+id/example2" android:title="@string/textSketch2"/>
+	<item android:id="@+id/privacy" android:title="@string/textPrivacy"/>
 	<item android:id="@+id/about" android:title="@string/textAbout"/>  
 </menu>  

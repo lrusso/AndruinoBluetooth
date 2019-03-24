@@ -179,13 +179,21 @@ public class Main extends Activity
 						{
 						clickInCopyText();
 						}
-					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSketch)))
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSketch1)))
 						{
-	    				clickInSketch();
+	    				clickInSketch1();
 						}
-					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSchematic)))
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSchematic1)))
 						{
-						clickInSchematics();
+						clickInSchematics1();
+						}
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSketch2)))
+						{
+						clickInSketch2();
+						}
+					else if (item.getTitle().toString().contains(getResources().getString(R.string.textSchematic2)))
+						{
+						clickInSchematics2();
 						}
 					else if (item.getTitle().toString().contains(getResources().getString(R.string.textPrivacy)))
 						{
@@ -309,13 +317,13 @@ public class Main extends Activity
 			}
 		}
 		
-	private void clickInSketch()
+	private void clickInSketch1()
 		{
 		LayoutInflater inflater = LayoutInflater.from(this);
-		View view=inflater.inflate(R.layout.sketch, null);
+		View view=inflater.inflate(R.layout.sketch1, null);
 
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);  
-		alertDialog.setTitle(getResources().getString(R.string.textSketch));  
+		alertDialog.setTitle(getResources().getString(R.string.textSketch1));
 		alertDialog.setView(view);
 		alertDialog.setPositiveButton(getResources().getString(R.string.textOK), new DialogInterface.OnClickListener()
 			{
@@ -325,12 +333,37 @@ public class Main extends Activity
 			});
 		alertDialog.show();
 		}
-	
-	private void clickInSchematics()
+
+	private void clickInSketch2()
+		{
+		LayoutInflater inflater = LayoutInflater.from(this);
+		View view=inflater.inflate(R.layout.sketch2, null);
+
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		alertDialog.setTitle(getResources().getString(R.string.textSketch2));
+		alertDialog.setView(view);
+		alertDialog.setPositiveButton(getResources().getString(R.string.textOK), new DialogInterface.OnClickListener()
+			{
+			public void onClick(DialogInterface dialog, int whichButton)
+				{
+				}
+			});
+		alertDialog.show();
+		}
+
+	private void clickInSchematics1()
 		{
 		Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen); 
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
-		dialog.setContentView(R.layout.schematic); 
+		dialog.setContentView(R.layout.schematic1);
+		dialog.show();
+		}
+
+	private void clickInSchematics2()
+		{
+		Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.schematic2);
 		dialog.show();
 		}
 

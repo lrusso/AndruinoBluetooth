@@ -6,8 +6,8 @@ android {
         applicationId "ar.com.lrusso.andruinobluetooth"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 17
-        versionName "1.6.3"
+        versionCode 18
+        versionName "1.6.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

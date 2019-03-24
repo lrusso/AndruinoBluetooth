@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:textColor="#000000"
-        android:text="@string/textSketchExample" />
+        android:text="@string/textSketch2Example" />
 
     </LinearLayout>
 </ScrollView>
