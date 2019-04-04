@@ -20,6 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="Sketch1"
+            android:label="@string/textSketch1"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|screenLayout">
+        </activity>
+        <activity
+            android:name="Sketch2"
+            android:label="@string/textSketch2"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|screenLayout">
+        </activity>
     </application>
 
 </manifest>

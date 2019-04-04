@@ -1,0 +1,4 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ar.com.lrusso.andruinobluetooth="http://schemas.android.com/apk/res-auto">
+	<item android:id="@+id/about" android:title="@string/textAbout"/>
+</menu>  

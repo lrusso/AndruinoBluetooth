@@ -3,6 +3,10 @@ package ar.com.lrusso.andruinobluetooth;
 import android.content.ClipboardManager;
 import android.text.Html;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 
 import android.app.Activity;
@@ -13,6 +17,8 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.Context;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
@@ -319,36 +325,14 @@ public class Main extends Activity
 		
 	private void clickInSketch1()
 		{
-		LayoutInflater inflater = LayoutInflater.from(this);
-		View view=inflater.inflate(R.layout.sketch1, null);
-
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);  
-		alertDialog.setTitle(getResources().getString(R.string.textSketch1));
-		alertDialog.setView(view);
-		alertDialog.setPositiveButton(getResources().getString(R.string.textOK), new DialogInterface.OnClickListener()
-			{
-			public void onClick(DialogInterface dialog, int whichButton)
-				{
-				}
-			});
-		alertDialog.show();
+		Intent intent = new Intent(this, Sketch1.class);
+		startActivity(intent);
 		}
 
 	private void clickInSketch2()
 		{
-		LayoutInflater inflater = LayoutInflater.from(this);
-		View view=inflater.inflate(R.layout.sketch2, null);
-
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle(getResources().getString(R.string.textSketch2));
-		alertDialog.setView(view);
-		alertDialog.setPositiveButton(getResources().getString(R.string.textOK), new DialogInterface.OnClickListener()
-			{
-			public void onClick(DialogInterface dialog, int whichButton)
-				{
-				}
-			});
-		alertDialog.show();
+		Intent intent = new Intent(this, Sketch2.class);
+		startActivity(intent);
 		}
 
 	private void clickInSchematics1()
@@ -539,4 +523,48 @@ public class Main extends Activity
 	    		}
 	    	}
 		};
+
+    private String loadAssetTextAsString(String name)
+        {
+        BufferedReader in = null;
+        try
+            {
+            StringBuilder buf = new StringBuilder();
+            InputStream is = getAssets().open(name);
+            in = new BufferedReader(new InputStreamReader(is));
+
+            String str;
+            boolean isFirst = true;
+            while ((str=in.readLine())!=null)
+                {
+                if (isFirst)
+                    {
+                    isFirst = false;
+                    }
+                    else
+                    {
+                    buf.append("\n");
+                    }
+                buf.append(str);
+                }
+            return buf.toString();
+            }
+            catch (IOException e)
+            {
+            }
+            finally
+            {
+            if (in!=null)
+                {
+                try
+                    {
+                    in.close();
+                    }
+                    catch (IOException e)
+                    {
+                    }
+                }
+            }
+        return null;
+        }
 	}
