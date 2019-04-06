@@ -226,16 +226,7 @@ public class Main extends Activity
 			{
 			try
 				{
-				if (bluetooth==null)
-					{
-					try
-						{
-						bluetooth = new BluetoothUtils();
-						}
-						catch(Exception e)
-						{
-						}
-					}
+				bluetooth = new BluetoothUtils();
 				final AlertDialog.Builder singlechoicedialog = new AlertDialog.Builder(context);
 				final String[] names = bluetooth.getNames();
 				singlechoicedialog.setTitle(getResources().getString(R.string.textPairedDevices));
